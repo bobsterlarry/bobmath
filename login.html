@@ -66,28 +66,6 @@
       background-color: #45a049;
     }
   </style>
-</head>
-
-<body onload="document.getElementById('popup').style.display='block'">
-  <!-- Add the popup to the page -->
-  <div id="popup" class="popup">
-    <div class="popup-content">
-      <h2>Login</h2>
-      <form onsubmit="login(event)">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required value="bobster">
-
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required value="pogness">
-
-        <button type="submit">Submit</button>
-      </form>
-
-      <!-- Add a button to close the popup -->
-      <button onclick="document.getElementById('popup').style.display='none'">Close</button>
-    </div>
-  </div>
-
   <script>
     function login(event) {
       event.preventDefault(); // Prevent the form from submitting and refreshing the page
@@ -99,11 +77,38 @@
       if (username === 'bobster' && password === 'pogness') {
         // Hide the popup
         document.getElementById('popup').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
       } else {
         // Show an error message
         alert('Wrong password. Please try again.');
       }
     }
+  </script>
+</head>
+
+<body>
+  <!-- Add the popup to the page -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <h2>Login</h2>
+      <form onsubmit="login(event)">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="content" style="display: none;">
+    <!-- Add the main content of your website here -->
+  </div>
+
+  <script>
+    document.getElementById('popup').style.display = 'block';
   </script>
 </body>
 
