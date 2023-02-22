@@ -1,92 +1,109 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>My Webpage</title>
-	<style>
-		/* Styles for the popup */
-		.popup {
-			display: none;
-			position: fixed;
-			z-index: 1;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			overflow: auto;
-			background-color: rgba(0,0,0,0.4);
-		}
+  <title>My Webpage</title>
+  <style>
+    /* Styles for the popup */
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
 
-		.popup-content {
-			background-color: #fefefe;
-			margin: 10% auto;
-			padding: 20px;
-			border: 1px solid #888;
-			width: 80%;
-			max-width: 500px;
-		}
+    .popup-content {
+      background-color: #fefefe;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+    }
 
-		/* Styles for the form inside the popup */
-		form {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-		}
+    /* Styles for the form inside the popup */
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-		label {
-			margin-bottom: 10px;
-			font-weight: bold;
-		}
+    label {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
 
-		input[type="text"], input[type="password"] {
-			width: 100%;
-			padding: 12px 20px;
-			margin: 8px 0;
-			box-sizing: border-box;
-			border: 2px solid #ccc;
-			border-radius: 4px;
-			background-color: #f8f8f8;
-			font-size: 16px;
-		}
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      background-color: #f8f8f8;
+      font-size: 16px;
+    }
 
-		button[type="submit"] {
-			background-color: #4CAF50;
-			color: white;
-			padding: 14px 20px;
-			margin: 8px 0;
-			border: none;
-			border-radius: 4px;
-			cursor: pointer;
-			font-size: 16px;
-		}
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
 
-		button[type="submit"]:hover {
-			background-color: #45a049;
-		}
-	</style>
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
-<body>
-	<!-- Add a button to trigger the popup -->
-	<button onclick="document.getElementById('popup').style.display='block'">Login</button>
 
-	<!-- Add the popup to the page -->
-	<div id="popup" class="popup">
-		<div class="popup-content">
-			<h2>Login</h2>
-			<form>
-				<label for="username">Username:</label>
-				<input type="text" id="username" name="username" required>
+<body onload="document.getElementById('popup').style.display='block'">
+  <!-- Add the popup to the page -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <h2>Login</h2>
+      <form onsubmit="login(event)">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required value="bobster">
 
-				<label for="password">Password:</label>
-				<input type="password" id="password" name="password" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required value="pogness">
 
-				<button type="submit">Submit</button>
-			</form>
+        <button type="submit">Submit</button>
+      </form>
 
-			<!-- Add a button to close the popup -->
-			<button onclick="document.getElementById('popup').style.display='none'">Close</button>
-		</div>
-	</div>
+      <!-- Add a button to close the popup -->
+      <button onclick="document.getElementById('popup').style.display='none'">Close</button>
+    </div>
+  </div>
+
+  <script>
+    function login(event) {
+      event.preventDefault(); // Prevent the form from submitting and refreshing the page
+      // Get the username and password from the form
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      // Check if the username and password are valid
+      if (username === 'bobster' && password === 'pogness') {
+        // Hide the popup
+        document.getElementById('popup').style.display = 'none';
+      } else {
+        // Show an error message
+        alert('Wrong password. Please try again.');
+      }
+    }
+  </script>
 </body>
+
 </html>
-
-
